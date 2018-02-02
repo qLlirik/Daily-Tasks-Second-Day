@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entity">
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="Model.Cities">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Costumers">
+      <EntityTypeMapping TypeName="Model.Costumers">
+        <MappingFragment StoreEntitySet="Costumers">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="Model.Countries">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="Model.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OriginCityID" ColumnName="OriginCityID" />
+          <ScalarProperty Name="DestinationCityID" ColumnName="DestinationCityID" />
+          <ScalarProperty Name="InsureValue" ColumnName="InsureValue" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="DeclareValue" ColumnName="DeclareValue" />
+          <ScalarProperty Name="Shipment" ColumnName="Shipment" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="PartyCustomValue" ColumnName="PartyCustomValue" />
+          <ScalarProperty Name="ConsigneeID" ColumnName="ConsigneeID" />
+          <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderInParty">
+      <EntityTypeMapping TypeName="Model.OrderInParty">
+        <MappingFragment StoreEntitySet="OrderInParty">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="PartyCustomValue" ColumnName="PartyCustomValue" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartiesInRout">
+      <EntityTypeMapping TypeName="Model.PartiesInRout">
+        <MappingFragment StoreEntitySet="PartiesInRout">
+          <ScalarProperty Name="RoutID" ColumnName="RoutID" />
+          <ScalarProperty Name="PartyCustomValue" ColumnName="PartyCustomValue" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Party">
+      <EntityTypeMapping TypeName="Model.Party">
+        <MappingFragment StoreEntitySet="Party">
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+          <ScalarProperty Name="CustomClearance" ColumnName="CustomClearance" />
+          <ScalarProperty Name="DestinationPortID" ColumnName="DestinationPortID" />
+          <ScalarProperty Name="OriginPortID" ColumnName="OriginPortID" />
+          <ScalarProperty Name="CustomValue" ColumnName="CustomValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ports">
+      <EntityTypeMapping TypeName="Model.Ports">
+        <MappingFragment StoreEntitySet="Ports">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PortsInRout">
+      <EntityTypeMapping TypeName="Model.PortsInRout">
+        <MappingFragment StoreEntitySet="PortsInRout">
+          <ScalarProperty Name="PriorityInRout" ColumnName="PriorityInRout" />
+          <ScalarProperty Name="PortID" ColumnName="PortID" />
+          <ScalarProperty Name="RoutID" ColumnName="RoutID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Routes">
+      <EntityTypeMapping TypeName="Model.Routes">
+        <MappingFragment StoreEntitySet="Routes">
+          <ScalarProperty Name="ArriveDate" ColumnName="ArriveDate" />
+          <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+          <ScalarProperty Name="ShipID" ColumnName="ShipID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ships">
+      <EntityTypeMapping TypeName="Model.Ships">
+        <MappingFragment StoreEntitySet="Ships">
+          <ScalarProperty Name="DockyardID" ColumnName="DockyardID" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="Skipper" ColumnName="Skipper" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipTypes">
+      <EntityTypeMapping TypeName="Model.ShipTypes">
+        <MappingFragment StoreEntitySet="ShipTypes">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Units">
+      <EntityTypeMapping TypeName="Model.Units">
+        <MappingFragment StoreEntitySet="Units">
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

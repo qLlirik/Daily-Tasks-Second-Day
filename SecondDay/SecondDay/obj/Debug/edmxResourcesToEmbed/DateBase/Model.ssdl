@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Costumers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="INN" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="Bank" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="80" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SenderID" Type="int" Nullable="false" />
+    <Property Name="ConsigneeID" Type="int" Nullable="false" />
+    <Property Name="PartyCustomValue" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="Number" Type="int" />
+    <Property Name="Shipment" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="DeclareValue" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="UnitID" Type="int" Nullable="false" />
+    <Property Name="InsureValue" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="DestinationCityID" Type="int" Nullable="false" />
+    <Property Name="OriginCityID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderInParty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="PartyCustomValue" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PartiesInRout">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyCustomValue" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="RoutID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Party">
+    <Key>
+      <PropertyRef Name="CustomValue" />
+    </Key>
+    <Property Name="CustomValue" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OriginPortID" Type="int" Nullable="false" />
+    <Property Name="DestinationPortID" Type="int" Nullable="false" />
+    <Property Name="CustomClearance" Type="bit" Nullable="false" />
+    <Property Name="TotalWeight" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ports">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="CityID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PortsInRout">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoutID" Type="int" Nullable="false" />
+    <Property Name="PortID" Type="int" Nullable="false" />
+    <Property Name="PriorityInRout" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Routes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShipID" Type="int" Nullable="false" />
+    <Property Name="DepartureDate" Type="datetime" Nullable="false" />
+    <Property Name="ArriveDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ships">
+    <Key>
+      <PropertyRef Name="RegNumber" />
+    </Key>
+    <Property Name="RegNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Skipper" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="TypeID" Type="int" Nullable="false" />
+    <Property Name="Capacity" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="Year" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="Picture" Type="image" />
+    <Property Name="DockyardID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShipTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Units">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShortName" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Cities_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Cities">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="DestinationCityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Cities1">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OriginCityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Costumers">
+    <End Role="Costumers" Type="Self.Costumers" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Costumers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="SenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Costumers1">
+    <End Role="Costumers" Type="Self.Costumers" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Costumers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ConsigneeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="CustomValue" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="PartyCustomValue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Units">
+    <End Role="Units" Type="Self.Units" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Units">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderInParty_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderInParty" Type="Self.OrderInParty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderInParty">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderInParty_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="1" />
+    <End Role="OrderInParty" Type="Self.OrderInParty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="CustomValue" />
+      </Principal>
+      <Dependent Role="OrderInParty">
+        <PropertyRef Name="PartyCustomValue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartiesInRout_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="1" />
+    <End Role="PartiesInRout" Type="Self.PartiesInRout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="CustomValue" />
+      </Principal>
+      <Dependent Role="PartiesInRout">
+        <PropertyRef Name="PartyCustomValue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartiesInRout_Routes">
+    <End Role="Routes" Type="Self.Routes" Multiplicity="1" />
+    <End Role="PartiesInRout" Type="Self.PartiesInRout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Routes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PartiesInRout">
+        <PropertyRef Name="RoutID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Party_Ports">
+    <End Role="Ports" Type="Self.Ports" Multiplicity="1" />
+    <End Role="Party" Type="Self.Party" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ports">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Party">
+        <PropertyRef Name="OriginPortID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Party_Ports1">
+    <End Role="Ports" Type="Self.Ports" Multiplicity="1" />
+    <End Role="Party" Type="Self.Party" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ports">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Party">
+        <PropertyRef Name="DestinationPortID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ports_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Ports" Type="Self.Ports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ports">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PortsInRout_Ports">
+    <End Role="Ports" Type="Self.Ports" Multiplicity="1" />
+    <End Role="PortsInRout" Type="Self.PortsInRout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ports">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PortsInRout">
+        <PropertyRef Name="PortID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PortsInRout_Routes">
+    <End Role="Routes" Type="Self.Routes" Multiplicity="1" />
+    <End Role="PortsInRout" Type="Self.PortsInRout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Routes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PortsInRout">
+        <PropertyRef Name="RoutID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Routes_Ships">
+    <End Role="Ships" Type="Self.Ships" Multiplicity="1" />
+    <End Role="Routes" Type="Self.Routes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ships">
+        <PropertyRef Name="RegNumber" />
+      </Principal>
+      <Dependent Role="Routes">
+        <PropertyRef Name="ShipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ships_Ports">
+    <End Role="Ports" Type="Self.Ports" Multiplicity="1" />
+    <End Role="Ships" Type="Self.Ships" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ports">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ships">
+        <PropertyRef Name="DockyardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ships_ShipTypes">
+    <End Role="ShipTypes" Type="Self.ShipTypes" Multiplicity="1" />
+    <End Role="Ships" Type="Self.Ships" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShipTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ships">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ModelContainer">
+    <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Costumers" EntityType="Self.Costumers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderInParty" EntityType="Self.OrderInParty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PartiesInRout" EntityType="Self.PartiesInRout" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ports" EntityType="Self.Ports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortsInRout" EntityType="Self.PortsInRout" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Routes" EntityType="Self.Routes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ships" EntityType="Self.Ships" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShipTypes" EntityType="Self.ShipTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Cities" Association="Self.FK_Order_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Cities1" Association="Self.FK_Order_Cities1">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Costumers" Association="Self.FK_Order_Costumers">
+      <End Role="Costumers" EntitySet="Costumers" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Costumers1" Association="Self.FK_Order_Costumers1">
+      <End Role="Costumers" EntitySet="Costumers" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Party" Association="Self.FK_Order_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Units" Association="Self.FK_Order_Units">
+      <End Role="Units" EntitySet="Units" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderInParty_Order" Association="Self.FK_OrderInParty_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderInParty" EntitySet="OrderInParty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderInParty_Party" Association="Self.FK_OrderInParty_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="OrderInParty" EntitySet="OrderInParty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartiesInRout_Party" Association="Self.FK_PartiesInRout_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="PartiesInRout" EntitySet="PartiesInRout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartiesInRout_Routes" Association="Self.FK_PartiesInRout_Routes">
+      <End Role="Routes" EntitySet="Routes" />
+      <End Role="PartiesInRout" EntitySet="PartiesInRout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Party_Ports" Association="Self.FK_Party_Ports">
+      <End Role="Ports" EntitySet="Ports" />
+      <End Role="Party" EntitySet="Party" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Party_Ports1" Association="Self.FK_Party_Ports1">
+      <End Role="Ports" EntitySet="Ports" />
+      <End Role="Party" EntitySet="Party" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ports_Cities" Association="Self.FK_Ports_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Ports" EntitySet="Ports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PortsInRout_Ports" Association="Self.FK_PortsInRout_Ports">
+      <End Role="Ports" EntitySet="Ports" />
+      <End Role="PortsInRout" EntitySet="PortsInRout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PortsInRout_Routes" Association="Self.FK_PortsInRout_Routes">
+      <End Role="Routes" EntitySet="Routes" />
+      <End Role="PortsInRout" EntitySet="PortsInRout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Routes_Ships" Association="Self.FK_Routes_Ships">
+      <End Role="Ships" EntitySet="Ships" />
+      <End Role="Routes" EntitySet="Routes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ships_Ports" Association="Self.FK_Ships_Ports">
+      <End Role="Ports" EntitySet="Ports" />
+      <End Role="Ships" EntitySet="Ships" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ships_ShipTypes" Association="Self.FK_Ships_ShipTypes">
+      <End Role="ShipTypes" EntitySet="ShipTypes" />
+      <End Role="Ships" EntitySet="Ships" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

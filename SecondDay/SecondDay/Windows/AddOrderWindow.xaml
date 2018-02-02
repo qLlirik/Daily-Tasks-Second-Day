@@ -1,0 +1,134 @@
+﻿<Window x:Class="SecondDay.Windows.AddOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecondDay.Windows"
+        mc:Ignorable="d"
+        Title="Балтика - Добавление груза" Height="768" WindowStartupLocation="CenterScreen" Width="1366" FontSize="16" Background="LightGreen" WindowStyle="None">
+    <Grid>
+        <Button Click="click_Back" Content="Назад" Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <GroupBox Header="Выбор отправителя" Width="1300" Height="60">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Отправитель: " VerticalAlignment="Center"/>
+                    <ComboBox x:Name="cbxSender" Width="300"/>
+                    <Button Click="click_AddNewCostumer" Content="Добавить нового отправителя" Width="250" Margin="20 0 0 0"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Выбор получателя" Width="1300" Height="60" Margin="10">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Получатель: " VerticalAlignment="Center"/>
+                    <ComboBox x:Name="cbxConsignee" Width="300"/>
+                    <Button Click="click_AddNewCostumer" Content="Добавить нового получателя" Width="250" Margin="20 0 0 0"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Добавление грузов" Width="1300" Height="500">
+                <StackPanel>
+                    <Canvas HorizontalAlignment="Center" Width="1300" Height="150">
+                        <TextBlock Text="Наименование: " Canvas.Left="10" Canvas.Top="10"/>
+                        <TextBox x:Name="tbxShipment" MaxLength="30" Width="200" Canvas.Left="133" Canvas.Top="10"/>
+
+                        <TextBlock Text="Заявленная величина груза: " Canvas.Left="388" Canvas.Top="10"/>
+                        <TextBox x:Name="tbxDeclareValue" MaxLength="8" Width="200" Canvas.Left="605" Canvas.Top="10"/>
+
+                        <TextBlock Text="Застрахованная величина груза: " Canvas.Left="834" Canvas.Top="12"/>
+                        <TextBox x:Name="tbxInsureValue" MaxLength="8" Width="200" Canvas.Left="1081" Canvas.Top="12"/>
+
+                        <TextBlock Text="Еденица измерения: " VerticalAlignment="Center" Canvas.Left="10" Canvas.Top="55"/>
+                        <ComboBox x:Name="cbxUnit" Width="200" Canvas.Left="169" Canvas.Top="55"/>
+
+                        <TextBlock Text="Город отправления: " VerticalAlignment="Center" Canvas.Left="388" Canvas.Top="59"/>
+                        <ComboBox x:Name="cbxOrigin" Width="300" Canvas.Left="544" Canvas.Top="55"/>
+
+                        <TextBlock Text="Город назначения: " VerticalAlignment="Center" Canvas.Left="849" Canvas.Top="59"/>
+                        <ComboBox x:Name="cbxDesination" Width="300" Canvas.Left="990" Canvas.Top="55"/>
+                        <Button Click="click_AddInTheList" Content="Добавить в список" Width="250" Height="40" Canvas.Left="555" Canvas.Top="100"/>
+                    </Canvas>
+
+                    <ListView x:Name="lv" Height="300" Margin="10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Отправитель" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Costumers.Name}" TextWrapping="Wrap"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Header="Получатель" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Costumers1.Name}" TextWrapping="Wrap"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Header="Наименование" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Shipment}" TextWrapping="Wrap"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Header="Город отправления" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Cities.Name}" TextWrapping="Wrap"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Header="Город назначения" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Cities1.Name}" TextWrapping="Wrap"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Header="Заявл-я вел-а груза" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=DeclareValue}" TextWrapping="Wrap"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Header="Застрах-я вел-а гр-а" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=InsureValue}" TextWrapping="Wrap"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Header="Ед-а изм-я" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Units.ShortName}" TextWrapping="Wrap"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="50">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="click_Delete" Content="X" FontSize="18" Width="30" Height="30" FontWeight="Bold" Background="Red" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </GroupBox>
+
+            <Button Click="click_Save" Content="Оформить груз" Width="250" Height="40"/>
+        </StackPanel>
+    </Grid>
+</Window>

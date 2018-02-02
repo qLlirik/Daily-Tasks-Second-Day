@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b4f2875249fd4672983dd893353facff" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Cities" Width="1.5" PointX="0.75" PointY="16" />
+        <EntityTypeShape EntityType="Model.Costumers" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="Model.Countries" Width="1.5" PointX="1.5" PointY="19.5" />
+        <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="Model.OrderInParty" Width="1.5" PointX="5.25" PointY="2.25" />
+        <EntityTypeShape EntityType="Model.PartiesInRout" Width="1.5" PointX="3" PointY="8.875" />
+        <EntityTypeShape EntityType="Model.Party" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="Model.Ports" Width="1.5" PointX="1.5" PointY="12.5" />
+        <EntityTypeShape EntityType="Model.PortsInRout" Width="1.5" PointX="6.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Model.Routes" Width="1.5" PointX="6" PointY="16.625" />
+        <EntityTypeShape EntityType="Model.Ships" Width="1.5" PointX="3.75" PointY="12.25" />
+        <EntityTypeShape EntityType="Model.ShipTypes" Width="1.5" PointX="4.125" PointY="18.875" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Model.Units" Width="1.5" PointX="0.75" PointY="5.875" />
+        <AssociationConnector Association="Model.FK_Cities_Countries" />
+        <AssociationConnector Association="Model.FK_Order_Cities" />
+        <AssociationConnector Association="Model.FK_Order_Cities1" />
+        <AssociationConnector Association="Model.FK_Ports_Cities" />
+        <AssociationConnector Association="Model.FK_Order_Costumers" />
+        <AssociationConnector Association="Model.FK_Order_Costumers1" />
+        <AssociationConnector Association="Model.FK_Order_Party" />
+        <AssociationConnector Association="Model.FK_Order_Units" />
+        <AssociationConnector Association="Model.FK_OrderInParty_Order" />
+        <AssociationConnector Association="Model.FK_OrderInParty_Party" />
+        <AssociationConnector Association="Model.FK_PartiesInRout_Party" />
+        <AssociationConnector Association="Model.FK_PartiesInRout_Routes" />
+        <AssociationConnector Association="Model.FK_Party_Ports" />
+        <AssociationConnector Association="Model.FK_Party_Ports1" />
+        <AssociationConnector Association="Model.FK_PortsInRout_Ports" />
+        <AssociationConnector Association="Model.FK_Ships_Ports" />
+        <AssociationConnector Association="Model.FK_PortsInRout_Routes" />
+        <AssociationConnector Association="Model.FK_Routes_Ships" />
+        <AssociationConnector Association="Model.FK_Ships_ShipTypes" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
